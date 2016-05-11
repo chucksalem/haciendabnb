@@ -1,0 +1,40 @@
+.featured-map {
+    background-color: #000;
+    position: relative;
+    
+    &:before {
+        background: image-url('portfolio4.jpg') bottom center no-repeat;
+        background-size: cover;
+        content: "";
+        height: 100%;
+        left: 0;
+        opacity: .5;
+        position: absolute;
+        top: 0;
+        width: 100%;
+    }
+
+    .content {
+        float: left;
+
+        h1 {
+            font-size: 2.1em;
+            color: $white;
+        }
+        p {
+            color: $white;
+        }
+    }
+    .map {
+        float: left;
+        @include bp-until($breakpoint__md) { margin-top: 5em; }
+        overflow: hidden;
+        text-align: center;
+        @include bp-until($breakpoint__md) { width: 100%; }
+        
+        img {
+            @include bp-at-least($breakpoint__md) { float: right; }
+            max-width: 270px;
+        }
+    }
+}

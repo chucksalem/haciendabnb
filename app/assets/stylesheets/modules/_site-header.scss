@@ -1,0 +1,146 @@
+/* @site-header
+-----------------------------------------------------  */
+.site-header {
+    @include bp-until($breakpoint__md) { text-align: center; }
+
+    &.full-background {
+        background-color: #000;
+        position: relative;
+
+        &:before {
+            background: image-url('oceano.jpg') bottom center no-repeat;
+            background-size: cover;
+            content: "";
+            height: 100%;
+            left: 0;
+            opacity: .75;
+            position: absolute;
+            top: 0;
+            width: 100%;
+            margin-top: 50px;
+        }
+        .hero {
+            background: none;
+            margin-top: -25px;
+        }
+    }
+
+    .nav-bar {
+        padding: 15px 0;
+        opacity: 0.99;
+        background: white;
+
+        .subpage & {
+            background: $white;
+        }
+
+        .brand-container {
+            display: inline-block;
+            vertical-align: bottom;
+            width: 100%;
+            @include bp-at-least($breakpoint__md) { width: 25%; }
+
+            .brand {
+                display: inline-block;
+                fill: #1A9EC1;
+                width: 90px;
+
+                .subpage & {
+                    fill: $cerulean;
+                }
+            }
+        }
+        .main-navigation {
+            display: inline-block;
+            @include bp-until($breakpoint__md) { margin: 1em 0 0 0; }
+            @include bp-at-least($breakpoint__md) { margin: 0 -5px 0 0; }
+            padding-left: 0;
+            @include bp-at-least($breakpoint__md) { text-align: right; }
+            width: 100%;
+            @include bp-at-least($breakpoint__md) { width: 75%; }
+
+            li {
+                display: inline-block;
+                font-size: 1em;
+                line-height: 2;
+                margin-bottom: 0;
+
+                a {
+                    @extend %sans--black;
+                    color: $brown;
+                    font-size: 1.3em;
+                    padding: .5em 1em;
+                    text-transform: uppercase;
+
+                    .wf-loading & {
+                      visibility: hidden;
+                    }
+                    .wf-active & {
+                      visibility: visibile;
+                    }
+
+                    .subpage & {
+                        color: $brown;
+                    }
+                }
+            }
+        }
+    }
+    .hero {
+        background-color: #000;
+        position: relative;
+        
+        &:before {
+            background: image-url('oceano.jpg') center center no-repeat;
+            background-size: cover;
+            content: "";
+            height: 100%;
+            left: 0;
+            opacity: .75;
+            position: absolute;
+            top: 0;
+            width: 100%;
+        }
+        &.no-bg {
+            background: none;
+
+            &:before {
+                display: none;
+            }
+        }
+
+        &.hero-small {
+            .layout-container {
+                padding-top: 50px;
+                padding-bottom: 50px;
+            }
+        }
+
+        h1, .lede {
+            color: $white;
+        }
+        h1 {
+            @extend %serif--italic;
+
+            &.bottom-border {
+                position: relative;
+
+                &:after {
+                    content: "";
+                    position: absolute;
+                    bottom: -10px;
+                    left: 50%;
+                    margin-left: -20px;
+                    width: 40px;
+                    height: 3px;
+                    background-color: $white;
+                }
+            }
+        }
+        .lede {
+            @extend %sans--bold;
+            margin: 0 auto;
+            max-width: 375px;
+        }
+    }
+}

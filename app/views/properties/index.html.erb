@@ -1,0 +1,95 @@
+<% content_for :hero_title, "Find a Rental".html_safe %> <!-- Hero/Page Title -->
+<% content_for :lede, "Search for a rental at Rocky Point".html_safe %>
+<section class="padded-top scallop-top beige-bg">
+    <div class="layout-container">
+        <div class="property-search">
+            <%= form_tag("/accommodations", {method: 'get', class: 'gw no-gutter'}) do %>
+                <fieldset class="g sm-one-whole md-one-fourth">
+                    <label class="is-visually-hidden">Where are you going?</label>
+                    <div class="select-style">
+                    <%- areas_options = [['Where are you going?', '-', {disabled: 'disabled'}], ['Any', 'all']] + areas.map { |v| [v[:name], v[:key]] } %>
+                    <%= select_tag "area", options_for_select(areas_options, @area) %>
+                    </div>
+                </fieldset>
+                <fieldset class="g sm-one-third md-one-seventh">
+                    <%= text_field_tag "start_date", @start_date, class: 'no-borders datepicker', placeholder: 'Arrive' %>
+                </fieldset>
+                <fieldset class="g sm-one-third md-one-seventh">
+                    <%= text_field_tag "end_date", @end_date, class: 'no-borders datepicker', placeholder: 'Depart' %>
+                </fieldset>
+                <fieldset class="g sm-one-third md-one-eighth">
+                    <label class="is-visually-hidden" for="guests">Guests</label>
+                    <div class="select-style">
+                    <%- guest_options = [['Guests', '-', {disabled: 'disabled'}], ['Any', 'all']] + (1..10).map { |v| [v, v] } %>
+                    <%= select_tag "guests", options_for_select(guest_options, @guests) %>
+                    </div>
+                </fieldset>
+                <fieldset class="g sm-one-whole md-one-sixth">
+                    <label class="is-visually-hidden" for="sort">Sort by</label>
+                    <div class="select-style">
+                        <%- sort_options = [['Sort by', '-', {disabled: 'disabled'}]] + sort_by %>
+                        <%= select_tag "sort", options_for_select(sort_options, @sort) %>
+                    </div>
+                </fieldset>
+                <footer class="g md-two-twelfths">
+                    <input class="btn btn--green no-min-width max-width" type="submit" value="Search">
+                </footer>
+            <%- end %>
+        </div>
+    </div>
+    <%- if @units.empty? %>
+    <div class="layout-container-smaller padded-bottom layout-centered">
+        <h1>No available rental properties found</h1>
+        <p>Please adjust your search and try again.</p>
+    </div>
+    <%- else %>
+    <div class="layout-container">
+        <ul class="properties-list gw small-gutter">
+            <%- @units.each do |unit| %>
+            <li class="property g sm-one-half md-one-whole">
+
+                <%
+                full_link = accommodation_url(unit.code) + "?start_date=#{@start_date}&end_date=#{@end_date}&guests=#{@guests}"
+                %>
+
+                <a href="<%= full_link %>"><img class="property-thumb" src="<%= unit.standard_images[0][:url] %>"></a>
+                <div class="details">
+                    <div class="gw small-gutter">
+                        <div class="g md-three-eighths">
+                            <h2><a href="<%= full_link %>"><%= unit.name %></a></h2>
+                            <p class="location"><%= unit.address.street %> <br><%= unit.address.city %>, <%= unit.address.country %></p>
+                        </div>
+                        <div class="g md-three-eighths">
+                            <ul class="offerings">
+                                <li>
+                                    <i class="icon icon-bath"></i>
+                                    <span class="detail"><%= unit.bathrooms %> bath</span>
+                                </li>
+                                <li>
+                                    <i class="icon icon-bed"></i>
+                                    <span class="detail"><%= unit.bedrooms %> beds</span>
+                                </li>
+                                <li>
+                                    <i class="icon icon-guests"></i>
+                                    <span class="detail"><%= unit.occupancy %> guests</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="g md-two-eighths">
+                            <span class="price"></span>
+                            <span class="type"><%= unit.type %></span>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <%- end %>
+
+        </ul>
+
+        <div class="pagination pagination-centered">
+        <%= will_paginate @units, previous_label: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16.3 32.6"><polygon points="16.3,32.6 0,16.3 16.3,0"/></svg>',
+                                  next_label: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16.3 32.6"><polygon points="0,0 16.3,16.3 0,32.6"/></svg>' %>
+        <%- end %>
+        </div>
+    </div>
+</section>

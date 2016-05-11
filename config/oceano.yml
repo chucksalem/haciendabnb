@@ -1,0 +1,14 @@
+weather:
+    latitude: 31.3283525
+    longitude: -113.5386801
+areas:
+    - Corona del Sol
+    - Costa Diamente
+    - Las Conchas
+    - Las Palmas
+    - Mirador
+    - Playa Encanto
+    - Sandy Beach
+cache_population_searches:
+    - address:
+        country: 'MX'

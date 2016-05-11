@@ -1,0 +1,31 @@
+/* @lists 
+-------------------------------------------------------- */
+
+ul,
+ol {
+    padding-left: 3em;
+
+    li {
+        font-size: 1.5em;
+        margin-bottom: .5em;
+
+        &.sans {
+            @extend %sans--medium;
+        }
+        &.padded-right {
+            padding-right: 1em;
+        }
+
+        ul li {
+          font-size:1em;
+        }
+    }
+    &.gw {
+        li {
+            font-size: inherit;
+        }
+    }
+    &.no-padding {
+        padding-left: 0;
+    }
+}
