@@ -6,9 +6,10 @@
     &.full-background {
         background-color: #000;
         position: relative;
+        height: 100%;
 
         &:before {
-            background: image-url('oceano.jpg') bottom center no-repeat;
+            background: url('oceano.jpg') bottom center no-repeat;
             background-size: cover;
             content: "";
             height: 100%;
@@ -26,11 +27,16 @@
     }
 
     .nav-bar {
-        padding: 15px 0;
+        padding: 35px 0px 20px 0px;
         opacity: 0.99;
-        background: white;
+        background: $white;
+        width: 100%;
+        position: fixed;
+        z-index: 99;
+        box-shadow: 10px 2px 5px #888888;
 
         .subpage & {
+            padding-top: 15px;
             background: $white;
         }
 
@@ -43,7 +49,6 @@
             .brand {
                 display: inline-block;
                 fill: #1A9EC1;
-                width: 90px;
 
                 .subpage & {
                     fill: $cerulean;
