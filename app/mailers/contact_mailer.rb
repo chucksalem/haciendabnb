@@ -1,6 +1,6 @@
 class ContactMailer < ActionMailer::Base
   default from: 'info@gooceano.com'
-  default to: 'info@gooceano.com'
+  default to: 'swapnil.patil@tudip.nl'
 
   def contact(email:, first_name:, last_name:, phone:, message:)
     @email      = email

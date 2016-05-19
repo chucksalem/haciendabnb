@@ -32,11 +32,11 @@
                     </fieldset>
                     <fieldset class="half right">
                         <label>Phone Number</label>
-                        <input type="tel" name="phone">
+                        <input type="tel" name="phone" class="number-validate" maxlength="12" onpaste="return false">
                     </fieldset>
                     <fieldset>
                         <label>Special requests or questions?<span class="important">*</span></label>
-                        <textarea class="special-requests" required></textarea>
+                        <textarea class="special-requests" name="message" required></textarea>
                     </fieldset>
                     <footer class="form__actions">
                         <article class="two-fifths">
