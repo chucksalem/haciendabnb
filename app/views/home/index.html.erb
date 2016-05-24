@@ -1,26 +1,26 @@
 <% content_for :header_class, 'full-background' %>
 <% content_for :hero_class, 'no-bg' %>
 <% content_for :hero_size, 'hero-medium' %>
-<% content_for :hero_title, "Welcome to haciendabnb".html_safe %>
+<% content_for :hero_title, "Welcome to Hacienda del Mar".html_safe %>
 <% content_for :lede, "The largest selection of beach house rentals and condos in Rocky Point".html_safe %>
 
 <section class="scallop-top top-padding-by-3 main-content light-grey-bg-color">
     <div class="layout-container layout-centered">
         <div class="property-search margin-top-by-28 margin-bottom-by-20">
-            <%= form_tag("/accommodations", {method: 'get', class: 'gw no-gutter'}) do %>
+            <form class='gw no-gutter'>
                 <fieldset class="g sm-one-whole md-five-twelfths">
                     <label class="is-visually-hidden">Rooms</label>
                     <div class="select-style">
-                        <select name="area">
-                            <option disabled selected>Rooms</option>
-                            <option value="all">Any</option>
-                            <option value="el Pelican">el Pelican</option>
-                            <option value="La Sala">La Sala</option>
-                            <option value="La Paloma">La Paloma</option>
-                            <option value="La chuparosa">La chuparosa</option>
-                            <option value="courtyard 1">courtyard 1</option>
-                            <option value="courtyard 2">courtyard 2</option>
-                            <option value="La Aguila">La Aguila</option>
+                        <select name="id" id="select-drop" value="">
+                            <option disabled selected class="drop-options" >Rooms</option>
+                            <option id="all" value="1911-89478" class="drop-options" >Any</option>
+                            <option id="HPLCN" value="1911-89481" class="drop-options" style="cursor: pointer;">El Pelican</option>
+                            <option id="HSALA" value="1911-89483" class="drop-options">La Sala</option>
+                            <option id="HPLMA" value="1911-89482" class="drop-options">La Paloma</option>
+                            <option id="HCHUP" value="1911-89477" class="drop-options">La Chuparosa</option>
+                            <option id="HCRT1" value="1911-89479" class="drop-options">Courtyard 1</option>
+                            <option id="HCRT2" value="1911-89480" class="drop-options">Courtyard 2</option>
+                            <option id="HAGUI" value="1911-112148" class="drop-options">La Aguila</option>
                         </select>
                     </div>
                 </fieldset>
@@ -33,7 +33,7 @@
                 <fieldset class="g sm-one-fourth md-one-eighth text-align-right">
                     <label class="is-visually-hidden" for="guests">Guests</label>
                     <div class="select-style">
-                        <select name="guests">
+                        <select name="guests" id="guests">
                             <option disabled selected>Guests</option>
                             <option value="all">Any</option>
                             <option value="1">1</option>
@@ -50,9 +50,9 @@
                     </div>
                 </fieldset>
                 <footer class="g md-two-twelfths">
-                    <input class="btn btn--brown no-min-width max-width" type="submit" value="Search">
+                  <input class="btn btn--brown no-min-width max-width search-btn" type="button" value="Search">
                 </footer>
-            <%- end %>
+            </form>
         </div>
     </div>
 </section>
@@ -156,7 +156,7 @@
   <div class="layout-container margin-0">
     <div class="one-whole">
     <div class="content md-one-half float-left font-family-open-sans">
-      <h1 class="after-heading-underline font-family-open-sans">Memories From Haciendabnb</h1>    <p class="g-memories-desc font-family-open-sans">Sed hendrerit quam sed ante euismod posu. Mauris ut elementum ante. Vestibuel suscipit convallis purus mattis magna sapien, euismod convallis sagittis quis euismod posu.Vivamus id mi non quam congue venenatis et at lorem. Ut ullamcorper odio id metus eleif tincidunt. Proin ante arcu, aliquam nec rhon sit amet, consequat vitae suscipit magna. Sed hendrerit quam sed ante euismod posu. Mauris ut elementum ante. Vivamus id mi non quam congue venenatis et at lorem. Ut ullamcorper odio id metus eleif tincidunt consequat vitae suscipit magna. Maecenas mauris orci, pellentesque at vestibulum quis.</p>             </div>
+      <h1 class="after-heading-underline font-family-open-sans">Memories From Hacienda del Mar</h1>    <p class="g-memories-desc font-family-open-sans">Sed hendrerit quam sed ante euismod posu. Mauris ut elementum ante. Vestibuel suscipit convallis purus mattis magna sapien, euismod convallis sagittis quis euismod posu.Vivamus id mi non quam congue venenatis et at lorem. Ut ullamcorper odio id metus eleif tincidunt. Proin ante arcu, aliquam nec rhon sit amet, consequat vitae suscipit magna. Sed hendrerit quam sed ante euismod posu. Mauris ut elementum ante. Vivamus id mi non quam congue venenatis et at lorem. Ut ullamcorper odio id metus eleif tincidunt consequat vitae suscipit magna. Maecenas mauris orci, pellentesque at vestibulum quis.</p>             </div>
     <div class="content md-one-half float-left left-padding-by-5">
       <div class="content one-half float-left">
       <img alt="" src="http://demo.inspiretheme.com/templates/paradise/images/Demo/elements/gallery1.jpg" width="264" height="166" class="tilt-image-by-7 img-border-5px">
@@ -174,4 +174,3 @@
     </div>
   </div>
 </section>
-

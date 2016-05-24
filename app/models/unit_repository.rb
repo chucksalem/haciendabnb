@@ -29,7 +29,9 @@ class UnitRepository
     codes       = all.sample(limit).map! { |k| k.sub('units:', '') }
 
     codes.each_with_object([]) do |code, accum|
-      accum << self.get(code)
+      if ['1911-89482', '1911-89479', '1911-112148', '1911-89477', '1911-89481', '1911-89483', '1911-89480', '1911-89478'].include? code
+        accum << self.get(code)
+      end
       accum
     end
   end

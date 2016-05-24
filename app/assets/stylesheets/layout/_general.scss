@@ -270,3 +270,12 @@ and (-webkit-min-device-pixel-ratio: 1) {
   }
 }
 
+.highlight-selected {
+  content: '';
+  height: 4px;
+  border-radius: 25px;
+  background: rgba(208, 170, 105, 0.75);
+  position: relative;
+  width: 50px;
+  margin: 25px auto;
+}

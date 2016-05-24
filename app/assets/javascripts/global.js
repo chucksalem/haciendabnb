@@ -36,7 +36,16 @@ $(function(){
             return false;
         }
     });
-
+    if ($('.main-content').length > 0)
+        $('.homepage').addClass('highlight-selected');
+    if ($('.pagination').length > 0)
+        $('.reserve-highlight').addClass('highlight-selected');
+    if ($('.reserve-high').length > 0)
+        $('.reserve-highlight').addClass('highlight-selected');
+    if ($('.resources-high').length > 0)
+        $('.resources-highlight').addClass('highlight-selected');
+    if ($('.contact-high').length > 0)
+        $('.contact-highlight').addClass('highlight-selected');
   // Update the second date field based on the first field's selected date
   $('#start_date').on("change", function(e) {
 
@@ -50,3 +59,4 @@ $(function(){
     endPicker.setMoment(moment(nextDate, 'M/D/YYYY'));
   });
 });
+

@@ -65,7 +65,7 @@
     </table>
     <% end %>
 <%- elsif @lookup && !@available %>
-    <header class="booking-header">
+    <header class="booking-header hacienda-bg-color">
         <h2>Availability and Rate</h2>
     </header>
     <%= form_tag("/accommodations/#{@id}", {method: 'get', class: 'gw no-gutter booking-details'}) do %>
@@ -91,13 +91,13 @@
         </tr>
         <tr class="full-width-container">
         <td>
-            <input class="btn no-min-width" type="submit" value="Check Availability">
+            <input class="btn no-min-width hacienda-bg-color" type="submit" value="Check Availability">
         </td>
         </tr>
     </table>
     <% end %>
 <%- else %>
-    <header class="booking-header">
+    <header class="booking-header hacienda-bg-color">
         <h2>Availability and Rate</h2>
     </header>
     <%= form_tag("/accommodations/#{@id}", { method: 'get', class: 'gw no-gutter booking-details' }) do %>
@@ -123,10 +123,15 @@
         </tr>
         <tr class="full-width-container">
         <td>
-            <input class="btn no-min-width" type="submit" value="Check Availability">
+            <input class="btn no-min-width hacienda-bg-color" type="submit" value="Check Availability">
         </td>
         </tr>
     </table>
     <% end %>
 <% end %>
 </aside>
+<style>
+  .hacienda-bg-color{
+    background-color: #d0aa69 !important;
+  }
+</style>

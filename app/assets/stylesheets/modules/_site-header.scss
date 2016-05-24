@@ -36,7 +36,7 @@
         box-shadow: 10px 2px 5px #888888;
 
         .subpage & {
-            padding-top: 15px;
+            padding-top: 10px;
             background: $white;
         }
 
@@ -96,7 +96,7 @@
         position: relative;
         
         &:before {
-            background: image-url('oceano.jpg') center center no-repeat;
+            background: image-url('subpage-bg.jpg') center center no-repeat;
             background-size: cover;
             content: "";
             height: 100%;
