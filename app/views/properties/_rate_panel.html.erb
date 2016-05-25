@@ -1,6 +1,6 @@
 <aside class="request-booking md-one-third">
 <%- if @lookup && @available %>
-    <header class="booking-header">
+    <header class="booking-header hacienda-bg-color">
         <h2>$<%= '%.0f' % @nightly_rate %> <span class="term">Per Night</span></h2>
     </header>
     <%= form_tag("/accommodations/#{@id}", {method: 'get', class: 'gw no-gutter booking-details'}) do %>
@@ -23,7 +23,7 @@
         </tr>
         <tr class="full-width-container">
             <td>
-                <input class="btn no-min-width" type="submit" value="Search Again">
+                <input class="btn no-min-width hacienda-bg-color" type="submit" value="Search Again">
             </td>
         </tr>
         <tr class="details first">
@@ -54,7 +54,7 @@
         </tr>
         <tr class="full-width-container">
             <td>
-                <a href="http://bookings.oceano-rentals.com/Booking/RateDetails/<%= @booking_id %>?arrive=<%= @start_date %>&depart=<%= @end_date %>&adults=<%= @guests %>" class="btn request-booking-link">Request Booking</a>
+                <a href="http://bookings.oceano-rentals.com/Booking/RateDetails/<%= @booking_id %>?arrive=<%= @start_date %>&depart=<%= @end_date %>&adults=<%= @guests %>" class="btn request-booking-link hacienda-bg-color">Request Booking</a>
             </td>
         </tr>
         <tr class="full-width-container">
