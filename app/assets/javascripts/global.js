@@ -46,6 +46,8 @@ $(function(){
         $('.resources-highlight').addClass('highlight-selected');
     if ($('.contact-high').length > 0)
         $('.contact-highlight').addClass('highlight-selected');
+    if ($('.about-high').length > 0)
+        $('.about-highlight').addClass('highlight-selected');
   // Update the second date field based on the first field's selected date
   $('#start_date').on("change", function(e) {
 

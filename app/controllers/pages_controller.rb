@@ -47,4 +47,12 @@ class PagesController < ApplicationController
     render
   end
 
+  def about
+    render
+  end
+
+  def facilities
+    render
+  end
+
 end
