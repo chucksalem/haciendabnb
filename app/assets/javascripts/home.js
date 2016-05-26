@@ -1,5 +1,4 @@
 $(document).ready(function(){
-
     $('.search-btn').on('click', function(){
         var code = $('#select-drop').val();
         var guests = $('#guests').val();
@@ -11,5 +10,12 @@ $(document).ready(function(){
         }else{
             window.location = "/accommodations";
         }
+    });
+
+    $('.slider5').bxSlider({
+        slideWidth: 400,
+        minSlides: 3,
+        maxSlides: 3,
+        slideMargin: 10
     });
 });

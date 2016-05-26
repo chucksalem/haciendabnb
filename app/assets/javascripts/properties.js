@@ -55,8 +55,7 @@ $(document).ready(function(){
         if(code != null) {
             window.location = "/accommodations/"+code+"?start_date="+start_date+"&end_date="+end_date+"&guests="+guests;
         }else{
-            alert('Please select any option first');
+            alert('Please select any room first');
         }
-
     });
 });
