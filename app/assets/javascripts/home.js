@@ -28,4 +28,13 @@ $(document).ready(function(){
             slideMargin: 10
         });
     }
+
+    $( '.navbar-toggle' ).on('click',function(){
+        // if($(this).hasClass('hide')){
+        //     $('.navbar-collapse').removeClass('hide');
+        // }else{
+        //     $('.navbar-collapse').addClass('hide');
+        // }
+    });
+
 });
