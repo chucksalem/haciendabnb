@@ -31,5 +31,6 @@ $(document).ready(function(){
     }
 
     $('.navbar-inverse').css('margin-top','21px');
+    $('.heading-large.margin-top-by-5').css('padding-top','5%');
 
 });
