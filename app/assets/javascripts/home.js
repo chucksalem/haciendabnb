@@ -12,10 +12,20 @@ $(document).ready(function(){
         }
     });
 
-    $('.slider5').bxSlider({
-        slideWidth: 400,
-        minSlides: 3,
-        maxSlides: 3,
-        slideMargin: 10
-    });
+    var documentWidth = $(window).width();
+    if(documentWidth < 680){
+        $('.slider5').bxSlider({
+            slideWidth: 600,
+            minSlides: 1,
+            maxSlides: 1,
+            slideMargin: 10
+        });
+    }else{
+        $('.slider5').bxSlider({
+            slideWidth: 400,
+            minSlides: 3,
+            maxSlides: 3,
+            slideMargin: 10
+        });
+    }
 });

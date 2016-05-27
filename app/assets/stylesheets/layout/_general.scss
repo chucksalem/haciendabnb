@@ -232,7 +232,6 @@
 }
 
 .width-361-px {
-  width: 88%;
   background-color: white;
 }
 
@@ -307,4 +306,14 @@ and (-webkit-min-device-pixel-ratio: 1) {
 
 .bx-pager-item{
   display: none !important;
+}
+
+@media screen and (max-width: 680px) and (min-width: 150px){
+  .slider-margin{
+    margin: 0px;
+  }
+}
+
+.bx-prev, .bx-next{
+  z-index: 1 !important;
 }

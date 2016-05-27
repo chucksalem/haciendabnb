@@ -158,4 +158,46 @@
     font-family: inherit;
     color: #d0aa69 !important;
   }
+
+
+  // responsive media query
+  @media screen and (max-width: 855px) and (min-width: 200px){
+    .hero h1{
+      padding-top: 60px;
+      font-size: 35px;
+    }
+    //  .hacienda-logo{
+    //    font-size: 18px;
+    //  }
+    //.layout-container{
+    //  padding-left: 0px;
+    //  padding-right: 0px;
+    //}
+    //.main-navigation li a{
+    //    font-size: 10px !important;
+    //  }
+    //  .nav-bar{
+    //    height: 90px;
+    //    padding: 28px 0px 20px 0px;
+    //  }
+    //
+    //.main-navigation li{
+    //  margin-left: 1px;
+    //  float: left;
+    //  list-style-type: none;
+    //  display: inline;
+    //  font-size: 1em;
+    //  line-height: 2;
+    //  margin-bottom: 0;
+    //}
+    //.main-navigation{
+    //  margin: 0 13% !important;
+    //}
+  }
+
+  .hero .lede{
+    padding-top: 28px;
+    font-size: 2.0em;
+  }
+
 }
