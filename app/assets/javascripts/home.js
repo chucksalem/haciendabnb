@@ -22,6 +22,7 @@ $(document).ready(function(){
         });
     }else{
         $('.slider5').bxSlider({
+
             slideWidth: 400,
             minSlides: 3,
             maxSlides: 3,
@@ -29,12 +30,6 @@ $(document).ready(function(){
         });
     }
 
-    $( '.navbar-toggle' ).on('click',function(){
-        // if($(this).hasClass('hide')){
-        //     $('.navbar-collapse').removeClass('hide');
-        // }else{
-        //     $('.navbar-collapse').addClass('hide');
-        // }
-    });
+    $('.navbar-inverse').css('margin-top','21px');
 
 });
