@@ -152,30 +152,8 @@
 </section>
 <%- end %>
 
-<div id="map-container">
-  <%
-    @map_latitude = @unit.position[:latitude]
-    @map_longitude = @unit.position[:longitude]
-  %>
-  <div id="map-canvas" data-lat="<%= @map_latitude %>" data-lon="<%= @map_longitude %>"></div>
-</div>
+<script src='https://maps.googleapis.com/maps/api/js?v=3.exp'></script><div style='overflow:hidden;height:340px;width:1286px;'><div id='gmap_canvas' style='height:340px;width:1286px;'></div><div><small><a href="http://embedgooglemaps.com">									embed google maps							</a></small></div><div><small><a href="https://privacypolicytemplate.net">privacy policy template</a></small></div><style>#gmap_canvas img{max-width:none!important;background:none!important}</style></div><script type='text/javascript'>function init_map(){var myOptions = {zoom:10,center:new google.maps.LatLng(31.3268218,-113.5311843),mapTypeId: google.maps.MapTypeId.ROADMAP};map = new google.maps.Map(document.getElementById('gmap_canvas'), myOptions);marker = new google.maps.Marker({map: map,position: new google.maps.LatLng(31.3268218,-113.5311843)});infowindow = new google.maps.InfoWindow({content:'<strong>Hacienda del Mar</strong><br>Puerto Peñasco Sonora, Mexico<br>'});google.maps.event.addListener(marker, 'click', function(){infowindow.open(map,marker);});infowindow.open(map,marker);}google.maps.event.addDomListener(window, 'load', init_map);</script>
 
-<section class="padded-top padded-bottom related-places">
-  <div class="layout-container">
-    <h2 class="heading-two bottom-spacing-large">Other Places</h2>
-    <ul class="gw large-gutter no-padding">
-    <%- @random_units.each do |unit| %>
-      <li class="g md-one-third">
-        <a href="<%= accommodation_url(unit.code) %>">
-          <img src="<%= unit.standard_images[0][:url] %>">
-          <h2 class="top-spacing"><%= unit.name %></h2>
-          <p><%= ellipsis(unit.long_description, length: 50) %></p>
-        </a>
-      </li>
-    <%- end %>
-    </ul>
-  </div>
-</section>
 <style>
   .hacienda-bg-color{
     background-color: #d0aa69 !important;
