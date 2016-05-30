@@ -28,29 +28,29 @@
         </tr>
         <tr class="details first">
             <td class="g two-thirds">$<%=  '%.0f' % @nightly_rate %> x <%= @length_of_stay %> nights</td>
-            <td class="g one-third">$<%= @base_amount %></td>
+            <td class="g one-third text-align-right">$<%= @base_amount %></td>
         </tr>
         <tr class="details">
             <td class="g two-thirds">Tax</td>
-            <td class="g one-third">$<%= @tax_amount %></td>
+            <td class="g one-third text-align-right">$<%= @tax_amount %></td>
         </tr>
         <% @fees.each do |fee| %>
         <tr class="details">
             <td class="g two-thirds"><%= fee.name %></td>
-            <td class="g one-third">$<%= '%.2f' % fee.amount %></td>
+            <td class="g one-third text-align-right">$<%= '%.2f' % fee.amount %></td>
         </tr>
         <% end %>
         <tr class="details">
             <td class="g two-thirds highlight">Total</td>
-            <td class="g one-third highlight">$<%= '%.2f' % @total_amount %></td>
+            <td class="g one-third highlight text-align-right">$<%= '%.2f' % @total_amount %></td>
         </tr>
         <tr class="details">
             <td class="g two-thirds"><a href="/trip-cancellation-insurance" target="_blank">Optional Trip Cancellation Insurance</a></td>
-            <td class="g one-third">$<%= '%.2f' % ((@base_amount.to_f * 1.12) * 0.065) %></td>
+            <td class="g one-third text-align-right">$<%= '%.2f' % ((@base_amount.to_f * 1.12) * 0.065) %></td>
         </tr>
         <tr class="details">
             <td class="g two-thirds highlight">Total w/ Insurance</td>
-            <td class="g one-third highlight">$<%= '%.2f' % (((@base_amount.to_f * 1.12) * 0.065) + @total_amount.to_f) %></td>
+            <td class="g one-third highlight text-align-right">$<%= '%.2f' % (((@base_amount.to_f * 1.12) * 0.065) + @total_amount.to_f) %></td>
         </tr>
         <tr class="full-width-container">
             <td>
