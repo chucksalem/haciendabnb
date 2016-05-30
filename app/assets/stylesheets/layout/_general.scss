@@ -317,6 +317,29 @@ and (-webkit-min-device-pixel-ratio: 1) {
   }
 }
 
+@media screen and (max-width: 1024px) and (min-width: 681px) {
+  .slider-margin {
+    margin-left: 0px;
+  }
+
+  //
+  //.details{
+  //  padding: 0px 28px !important;
+  //}
+
+  .testimonial-image{
+    padding-right: 6px;
+  }
+
+  .property-search fieldset:nth-of-type(4) .select-style{
+    width: 90px;
+  }
+
+  .request-booking .booking-details .select-style{
+    width: 50px;
+  }
+}
+
 .bx-prev, .bx-next{
   z-index: 1 !important;
 }
