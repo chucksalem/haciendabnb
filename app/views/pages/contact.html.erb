@@ -28,7 +28,7 @@
                     </fieldset>
                     <fieldset class="half">
                         <label>Email Address<span class="important">*</span></label>
-                        <input type="email" name="email" required>
+                        <input type="email" name="email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
                     </fieldset>
                     <fieldset class="half right">
                         <label>Phone Number</label>
@@ -104,4 +104,4 @@
     </div>
 </section>
 
-<%= image_tag "contact-map.jpg", :class => "contact-map" %>
+<script src='https://maps.googleapis.com/maps/api/js?v=3.exp'></script><div style='overflow:hidden;height:340px;width:1286px;'><div id='gmap_canvas' style='height:340px;width:1286px;'></div><div><small><a href="http://embedgooglemaps.com">									embed google maps							</a></small></div><div><small><a href="https://privacypolicytemplate.net">privacy policy template</a></small></div><style>#gmap_canvas img{max-width:none!important;background:none!important}</style></div><script type='text/javascript'>function init_map(){var myOptions = {zoom:10,center:new google.maps.LatLng(31.3268218,-113.5311843),mapTypeId: google.maps.MapTypeId.ROADMAP};map = new google.maps.Map(document.getElementById('gmap_canvas'), myOptions);marker = new google.maps.Marker({map: map,position: new google.maps.LatLng(31.3268218,-113.5311843)});infowindow = new google.maps.InfoWindow({content:'<strong>Hacienda del Mar</strong><br>Puerto Peñasco Sonora, Mexico<br>'});google.maps.event.addListener(marker, 'click', function(){infowindow.open(map,marker);});infowindow.open(map,marker);}google.maps.event.addDomListener(window, 'load', init_map);</script>

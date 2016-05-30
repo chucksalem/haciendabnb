@@ -279,7 +279,7 @@ and (-webkit-min-device-pixel-ratio: 1) {
 
 .highlight-selected {
   content: '';
-  height: 4px;
+  //height: 4px;
   border-radius: 25px;
   background: rgba(208, 170, 105, 0.75);
   position: relative;
@@ -338,6 +338,12 @@ and (-webkit-min-device-pixel-ratio: 1) {
   .request-booking .booking-details .select-style{
     width: 50px;
   }
+}
+
+@media screen and (max-width: 1100px) and (min-width: 850px) {
+    .welcome-text-align-for-smaller{
+      margin-top: -8% !important;
+    }
 }
 
 .bx-prev, .bx-next{

@@ -1,4 +1,3 @@
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
 <% content_for :header_class, 'full-background' %>
 <% content_for :hero_class, 'no-bg' %>
 <% content_for :hero_size, 'hero-medium' %>
@@ -7,7 +6,7 @@
 
 <section class="scallop-top top-padding-by-3 main-content light-grey-bg-color">
     <div class="layout-container layout-centered">
-        <div class="property-search margin-top-by-28 margin-bottom-by-20">
+        <div class="property-search margin-top-by-28 margin-bottom-by-20 welcome-text-align-for-smaller">
             <form class='gw no-gutter'>
                 <fieldset class="g sm-one-whole md-five-twelfths">
                     <label class="is-visually-hidden">Rooms</label>
@@ -27,10 +26,10 @@
                     </div>
                 </fieldset>
                 <fieldset class="g sm-one-third md-one-seventh">
-                    <input id="start_date" class="no-borders datepicker" type="text" name="start_date" placeholder="Arrive">
+                    <input id="start_date" class="no-borders datepicker" type="text" name="start_date" placeholder="Arrive" autocomplete="off">
                 </fieldset>
                 <fieldset class="g sm-one-third md-one-seventh">
-                    <input id="end_date" class="no-borders datepicker" type="text" name="end_date" placeholder="Depart">
+                    <input id="end_date" class="no-borders datepicker" type="text" name="end_date" placeholder="Depart" autocomplete="off">
                 </fieldset>
                 <fieldset class="g sm-one-fourth md-one-eighth text-align-right">
                     <label class="is-visually-hidden" for="guests">Guests</label>
