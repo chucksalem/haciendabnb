@@ -58,14 +58,6 @@ $(function(){
     endPicker.setMoment(moment(nextDate, 'M/D/YYYY'));
   });
 
-    $('#end_date').on("change", function(e) {
-        var dateString = e.currentTarget.value;
-        var endDate = moment(dateString, 'M/D/YYYY');
-        // subtract one day to selected start date
-        var nextDate = endDate.subtract(2, 'd');
-        startPicker.setMoment(moment(nextDate, 'M/D/YYYY'));
-    });
-
     $('.contact-form').validate({ // initialize the plugin
         ignore: " ",
         rules:
