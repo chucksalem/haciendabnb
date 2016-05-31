@@ -68,7 +68,7 @@ $(function(){
             lastname: {
                 required: true
             },
-            email: {
+            emailId: {
                 required: true
             },
             message: {
