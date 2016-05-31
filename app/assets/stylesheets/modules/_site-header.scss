@@ -178,6 +178,20 @@
       padding-top: 60px;
       font-size: 35px;
     }
+
+  }
+
+  @media screen and (max-width: 1024px) and (min-width: 681px) {
+    .main-navigation{
+      width: 14% !important;
+    }
+  }
+
+
+  @media screen and (max-width: 680px) and (min-width: 400px) {
+    .main-navigation{
+      width: 30% !important;
+    }
   }
 
   .hero .lede{
