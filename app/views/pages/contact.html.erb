@@ -20,20 +20,20 @@
                     <%= tag(:input, type: "hidden", name: request_forgery_protection_token.to_s, value: form_authenticity_token) %>
                     <fieldset class="half">
                         <label>First Name<span class="important">*</span></label>
-                        <input type="text" name="firstname" class="firstname" onkeypress="return isCharacter(event)">
+                        <input type="text" name="firstname" class="firstname text-box-height">
                     </fieldset>
                     <fieldset class="half right">
                         <label>Last Name<span class="important">*</span></label>
-                        <input type="text" name="lastname" class="lastname" onkeypress="return isCharacter(event)">
+                        <input type="text" name="lastname" class="lastname text-box-height">
                     </fieldset>
                     <fieldset class="half">
                         <label>Email Address<span class="important">*</span></label>
-                        <input type="text" name="email" class="email">
+                        <input type="text" name="emailId" class="email text-box-height">
                         <p class="error invalid-email">Please enter a valid email address.</p>
                     </fieldset>
                     <fieldset class="half right">
                         <label>Phone Number</label>
-                        <input type="tel" name="phone" class="number-validate" maxlength="12" onpaste="return false" class="phone">
+                        <input type="tel" name="phone" class="number-validate text-box-height" maxlength="12" onpaste="return false" class="phone">
                     </fieldset>
                     <fieldset>
                         <label>Special requests or questions?<span class="important">*</span></label>
@@ -41,10 +41,10 @@
                     </fieldset>
                     <footer class="form__actions">
                         <article class="two-fifths">
-                            <p class="important">* denotes a required field</p>
+                            <p class="important">* Denotes a required field</p>
                         </article>
                         <article class="field two-fiths">
-                            <input class="field__input btn submit btn--brown" type="submit" id="submit" value="Submit Form" disabled>
+                            <input class="field__input btn submit btn--brown" type="submit" id="submit" value="Submit Form">
                             <span  class="field__feedback"></span>
                             <span  class="field__hint"></span>
                         </article>
@@ -105,4 +105,4 @@
     </div>
 </section>
 
-<script src='https://maps.googleapis.com/maps/api/js?v=3.exp'></script><div style='overflow:hidden;height:340px;width:1286px;'><div id='gmap_canvas' style='height:340px;width:1286px;'></div><div><small><a href="http://embedgooglemaps.com">									embed google maps							</a></small></div><div><small><a href="https://privacypolicytemplate.net">privacy policy template</a></small></div><style>#gmap_canvas img{max-width:none!important;background:none!important}</style></div><script type='text/javascript'>function init_map(){var myOptions = {zoom:10,center:new google.maps.LatLng(31.3268218,-113.5311843),mapTypeId: google.maps.MapTypeId.ROADMAP};map = new google.maps.Map(document.getElementById('gmap_canvas'), myOptions);marker = new google.maps.Marker({map: map,position: new google.maps.LatLng(31.3268218,-113.5311843)});infowindow = new google.maps.InfoWindow({content:'<strong>Hacienda del Mar</strong><br>Puerto Peñasco Sonora, Mexico<br>'});google.maps.event.addListener(marker, 'click', function(){infowindow.open(map,marker);});infowindow.open(map,marker);}google.maps.event.addDomListener(window, 'load', init_map);</script>
+<script src='https://maps.googleapis.com/maps/api/js?v=3.exp'></script><div style='overflow:hidden;height:340px;width:100%;'><div id='gmap_canvas' style='height:340px;width:1286px;'></div><div><small><a href="http://embedgooglemaps.com">									embed google maps							</a></small></div><div><small><a href="https://privacypolicytemplate.net">privacy policy template</a></small></div><style>#gmap_canvas img{max-width:none!important;background:none!important}</style></div><script type='text/javascript'>function init_map(){var myOptions = {zoom:10,center:new google.maps.LatLng(31.3268218,-113.5311843),mapTypeId: google.maps.MapTypeId.ROADMAP};map = new google.maps.Map(document.getElementById('gmap_canvas'), myOptions);marker = new google.maps.Marker({map: map,position: new google.maps.LatLng(31.3268218,-113.5311843)});infowindow = new google.maps.InfoWindow({content:'<strong>Hacienda del Mar</strong><br>Puerto Peñasco Sonora, Mexico<br>'});google.maps.event.addListener(marker, 'click', function(){infowindow.open(map,marker);});infowindow.open(map,marker);}google.maps.event.addDomListener(window, 'load', init_map);</script>

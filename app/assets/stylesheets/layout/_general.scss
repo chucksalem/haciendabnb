@@ -322,17 +322,12 @@ and (-webkit-min-device-pixel-ratio: 1) {
     margin-left: 0px;
   }
 
-  //
-  //.details{
-  //  padding: 0px 28px !important;
-  //}
-
   .testimonial-image{
     padding-right: 6px;
   }
 
   .property-search fieldset:nth-of-type(4) .select-style{
-    width: 90px;
+    width: 90px !important;
   }
 
   .request-booking .booking-details .select-style{
@@ -344,6 +339,10 @@ and (-webkit-min-device-pixel-ratio: 1) {
     .welcome-text-align-for-smaller{
       margin-top: -8% !important;
     }
+
+  .property-search fieldset:nth-of-type(4) .select-style{
+    width: 105px !important;
+  }
 }
 
 .bx-prev, .bx-next{
@@ -364,6 +363,10 @@ and (-webkit-min-device-pixel-ratio: 1) {
   display: none; 
 }
 
-#email-error{
+#email-error, #emailId-error{
   display: none !important;
+}
+
+.text-box-height{
+   height: 44px;
 }

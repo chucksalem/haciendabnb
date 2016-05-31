@@ -67,8 +67,9 @@ $(function(){
     });
 
     $('.contact-form').validate({ // initialize the plugin
-        ignore: "",
-        rules: {
+        ignore: " ",
+        rules:
+        {
             firstname: {
                 required: true
             },
