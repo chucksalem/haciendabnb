@@ -94,24 +94,6 @@ function isCharacter(evt) {
     }
 }
 
-function validateReferralSignUp(){
-    var checkEmailId = checkValidEmail();
-
-    $('.validFName , .validLName , .validEmail , .validPassword , .validCPassword').live('keyup',function(){
-        var fName = $(".validFName").val();
-        var lName = $(".validLName").val();
-        var email = $(".validEmail").val();
-        var password = $(".validPassword").val();
-        var cPassword = $(".validCPassword").val();
-        if (fName != '' && lName != '' && email != '' && password != '' && cPassword != '' && emailRegex.test(email) && password == cPassword && checkEmailId == true ){
-            $('.referral-signup-submit-btn').removeClass('btn-inactive-background-color');
-        }
-        else {
-            $('.referral-signup-submit-btn').addClass('btn-inactive-background-color');
-        }
-    });
-}
-
 $('.email').on('keyup', function (){
     var checkEmail = checkValidEmail();
     if(checkEmail){
