@@ -16,34 +16,35 @@
                 <h1 class="heading-small">Contact Us</h1>
                 <p>For more information, please fill out the following form, or contact us with any of the methods below this form.  Please make sure that your e-mail address is correct so that we may reply.</p>
                 <h2 class="heading-medium top-spacing">Contact Information</h2>
-                <form method="post" action="/contact/thank-you">
+                <form method="post" action="/contact/thank-you" class="contact-form">
                     <%= tag(:input, type: "hidden", name: request_forgery_protection_token.to_s, value: form_authenticity_token) %>
                     <fieldset class="half">
                         <label>First Name<span class="important">*</span></label>
-                        <input type="text" name="firstname" required>
+                        <input type="text" name="firstname" class="firstname" onkeypress="return isCharacter(event)">
                     </fieldset>
                     <fieldset class="half right">
                         <label>Last Name<span class="important">*</span></label>
-                        <input type="text" name="lastname" required>
+                        <input type="text" name="lastname" class="lastname" onkeypress="return isCharacter(event)">
                     </fieldset>
                     <fieldset class="half">
                         <label>Email Address<span class="important">*</span></label>
-                        <input type="email" name="email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+                        <input type="text" name="email" class="email">
+                        <p class="error invalid-email">Please enter a valid email address.</p>
                     </fieldset>
                     <fieldset class="half right">
                         <label>Phone Number</label>
-                        <input type="tel" name="phone" class="number-validate" maxlength="12" onpaste="return false">
+                        <input type="tel" name="phone" class="number-validate" maxlength="12" onpaste="return false" class="phone">
                     </fieldset>
                     <fieldset>
                         <label>Special requests or questions?<span class="important">*</span></label>
-                        <textarea class="special-requests" name="message" required></textarea>
+                        <textarea class="special-requests" name="message"  ></textarea>
                     </fieldset>
                     <footer class="form__actions">
                         <article class="two-fifths">
                             <p class="important">* denotes a required field</p>
                         </article>
                         <article class="field two-fiths">
-                            <input class="field__input btn submit btn--brown" type="submit" id="submit" value="Submit Form">
+                            <input class="field__input btn submit btn--brown" type="submit" id="submit" value="Submit Form" disabled>
                             <span  class="field__feedback"></span>
                             <span  class="field__hint"></span>
                         </article>

@@ -1,4 +1,5 @@
 $(document).ready(function(){
+
     $('.search-btn').on('click', function(){
         var code = $('#select-drop').val();
         var guests = $('#guests').val();
@@ -22,7 +23,6 @@ $(document).ready(function(){
         });
     }else{
         $('.slider5').bxSlider({
-
             slideWidth: 400,
             minSlides: 3,
             maxSlides: 3,
@@ -32,5 +32,5 @@ $(document).ready(function(){
 
     $('.navbar-inverse').css('margin-top','21px');
     $('.heading-large.margin-top-by-5').css('padding-top','10%');
-
 });
+
