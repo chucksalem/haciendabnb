@@ -4,3 +4,5 @@ set :pty, true
 
 set :user, 'haciendabnb'
 set :deploy_to, -> { "/home/haciendabnb/app" }
+
+set :stage, 'production'
