@@ -6,4 +6,4 @@ daemonize true
 
 pidfile ENV['PID_PATH'] || 'tmp/pids/puma.pid'
 
-port Integer(ENV['PORT'] || 5001)
+port 5001
