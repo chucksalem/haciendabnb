@@ -69,5 +69,4 @@ namespace :foreman do
 end
 
 after 'deploy:publishing', 'foreman:export'
-after 'deploy:publishing', 'foreman:stop'
 after 'deploy:publishing', 'foreman:start'
