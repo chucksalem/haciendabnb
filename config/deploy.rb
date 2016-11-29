@@ -68,5 +68,5 @@ namespace :foreman do
   end
 end
 
-after 'deploy:publishing', 'foreman:export'
-after 'deploy:publishing', 'foreman:start'
+# after 'deploy:publishing', 'foreman:export'
+# after 'deploy:publishing', 'foreman:start'

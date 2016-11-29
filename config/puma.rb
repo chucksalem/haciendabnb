@@ -5,7 +5,7 @@ preload_app!
 app_dir = File.expand_path("../..", __FILE__)
 shared_dir = "#{app_dir}/shared"
 
-bind "unix://#{shared_dir}/tmp/puma.sock"
+bind "unix://tmp/puma.sock"
 
 daemonize true
 
