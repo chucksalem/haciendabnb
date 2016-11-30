@@ -6,7 +6,7 @@ set :repo_url, 'git@github.com:chucksalem/haciendabnb.git'
 set :branch, 'master'
 
 set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system', 'public/uploads')
-set :linked_files, %w{config/application.yml}
+set :linked_files, %w{config/application.yml config/secrets.yml}
 
 set :whenever_identifier, ->{ "#{fetch(:application)}_#{fetch(:stage)}" }
 set :whenever_roles,      ->{ :app }
