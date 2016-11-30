@@ -66,6 +66,15 @@ namespace :foreman do
       end
     end
   end
+
+  desc 'Puma start' 
+  task :puma_start do
+    on roles(:app) do
+      within current_path do
+        execute "bundle exec puma -C config/puma.rb"
+      end
+    end
+  end
 end
 
 # after 'deploy:publishing', 'foreman:export'
