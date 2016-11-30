@@ -6,28 +6,13 @@ set :repo_url, 'git@github.com:chucksalem/haciendabnb.git'
 set :branch, 'master'
 
 set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system', 'public/uploads')
-
-set :port, 22
-set :rbenv_type, :user
-set :rbenv_ruby, File.read('.ruby-version').strip
+set :linked_files, %w{config/application.yml}
 
 set :whenever_identifier, ->{ "#{fetch(:application)}_#{fetch(:stage)}" }
 set :whenever_roles,      ->{ :app }
 
-namespace :deploy do
-  after :restart, :clear_cache do
-    on roles(:web), in: :groups, limit: 3, wait: 10 do
-    end
-  end
-
-  after :publishing, :precompile do
-    on roles(:app) do
-      within release_path do
-        execute :rbenv, :exec, "bundle exec rake assets:precompile RAILS_ENV=#{fetch(:stage)}"
-      end
-    end
-  end
-end
+set :puma_workers, 2
+set :puma_preload_app, true
 
 namespace :foreman do
   desc 'Export the Procfile to upstart'
@@ -71,7 +56,7 @@ namespace :foreman do
   task :puma_start do
     on roles(:app) do
       within current_path do
-        execute "bundle exec puma -C config/puma.rb"
+        execute "cd #{current_path} && ~/.rvm/bin/rvm default do bundle exec puma -C config/puma.rb"
       end
     end
   end
@@ -79,3 +64,4 @@ end
 
 # after 'deploy:publishing', 'foreman:export'
 # after 'deploy:publishing', 'foreman:start'
+# after 'deploy:publishing', 'foreman:puma_start'

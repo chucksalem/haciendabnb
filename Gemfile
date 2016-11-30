@@ -1,8 +1,5 @@
 source 'https://rubygems.org'
 
-gem 'capistrano', '3.4.0'
-gem 'capistrano-bundler', '1.1.4'
-gem 'capistrano-rbenv', '2.0.3'
 gem 'forecast_io', '2.0.0'
 gem 'foreman', '0.78.0'
 gem 'multi_json', '1.11.2'
@@ -19,6 +16,7 @@ gem 'sqlite3', '1.3.10'
 gem 'virtus', '1.0.5'
 gem 'whenever', '0.9.4', require: false
 gem 'will_paginate', '3.0.6'
+gem "figaro"
 
 gem 'jbuilder', '2.3.1'
 gem 'jquery-rails', '4.0.4'
@@ -32,6 +30,14 @@ group :development, :test do
   gem 'pry-rails', '0.3.4'
   gem 'rubocop', '0.33.0'
 end
+
+group :development do
+  gem 'capistrano-rvm'
+  gem 'capistrano', '3.4.0'
+  gem 'capistrano-bundler', '1.1.4'
+  gem 'capistrano3-puma'
+end
+
 
 group :test do
   gem 'webmock', '1.21.0'
