@@ -30,7 +30,7 @@ class PropertyRetriever
     end_date   = Date.strptime(criteria[:end_date], DATE_FORMAT)
     sort = 'G'
     sort = criteria[:sort] if criteria[:sort] && criteria[:sort] != '-'
-    guests = [{type: 10, count: params[:guests]}] unless [nil, '', 'all'].include?(criteria[:guests])
+    guests = [{type: 10, count: criteria[:guests]}] unless [nil, '', 'all'].include?(criteria[:guests])
     area = 'all'
     area = criteria[:area] unless criteria[:area].blank?
     codes = []
