@@ -2,6 +2,11 @@ class PropertiesController < ApplicationController
   DATE_FORMAT = '%m/%d/%Y'.freeze
 
   def index
+    @area       = params[:area] || '-'
+    @start_date = params[:start_date]
+    @end_date   = params[:end_date]
+    @guests     = params[:guests]
+    @sort       = params[:sort] || 'P'
     search_hash = { area: params[:area], start_date: params[:start_date], end_date: params[:end_date], guests: params[:guests], sort: params[:sort] }
     searcher = PropertyRetriever.new search_hash
     units = searcher.retrieve

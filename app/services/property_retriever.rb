@@ -39,10 +39,9 @@ class PropertyRetriever
     OceanoConfig[:cache_population_searches].each do |criteria|
       codes += UnitRepository.search(criteria.merge! search_hash)
     end
-
     codes = codes.uniq
 
-    if area != 'all'
+    if !area.blank? && area != 'all'
       in_area_codes = UnitRepository.units_in_area(area)
       codes = codes & in_area_codes
     end
