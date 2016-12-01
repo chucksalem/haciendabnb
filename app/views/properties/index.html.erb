@@ -3,38 +3,53 @@
 <section class="padded-top scallop-top beige-bg">
     <div class="layout-container">
         <div class="property-search">
-            <%= form_tag("/accommodations", {method: 'get', class: 'gw no-gutter'}) do %>
-                <fieldset class="g sm-one-whole md-one-fourth">
-                    <label class="is-visually-hidden">Where are you going?</label>
+            <%= form_tag(accommodations_path, class: 'gw no-gutter', method: :get) do %>
+                <fieldset class="g sm-one-whole md-five-twelfths">
+                    <label class="is-visually-hidden">Rooms</label>
                     <div class="select-style">
-                    <%- areas_options = [['Where are you going?', '-', {disabled: 'disabled'}], ['Any', 'all']] + areas.map { |v| [v[:name], v[:key]] } %>
-                    <%= select_tag "area", options_for_select(areas_options, @area) %>
+                        <select name="id" id="select-drop" value="">
+                            <option disabled selected class="drop-options" >Rooms</option>
+                            <option id="HCNDA" value="1911-89478" class="drop-options" >Any</option>
+                            <option id="HCNDA" value="1911-89478" class="drop-options" >Entire Complex</option>
+                            <option id="HPLCN" value="1911-89481" class="drop-options">El Pelicano</option>
+                            <option id="HSALA" value="1911-89483" class="drop-options">La Sala</option>
+                            <option id="HPLMA" value="1911-89482" class="drop-options">La Paloma</option>
+                            <option id="HCHUP" value="1911-89477" class="drop-options">La Chuparosa</option>
+                            <option id="HCRT1" value="1911-89479" class="drop-options">Courtyard 1</option>
+                            <option id="HCRT2" value="1911-89480" class="drop-options">Courtyard 2</option>
+                            <option id="HAGUI" value="1911-112148" class="drop-options">La Aguila</option>
+                        </select>
                     </div>
                 </fieldset>
                 <fieldset class="g sm-one-third md-one-seventh">
-                    <%= text_field_tag "start_date", @start_date, class: 'no-borders datepicker', placeholder: 'Arrive' %>
+                    <input id="start_date" readonly="readonly" class="no-borders datepicker arrival-date" type="text" name="start_date" placeholder="Arrive" autocomplete="off">
                 </fieldset>
                 <fieldset class="g sm-one-third md-one-seventh">
-                    <%= text_field_tag "end_date", @end_date, class: 'no-borders datepicker', placeholder: 'Depart' %>
+                    <input id="end_date" readonly="readonly" class="no-borders datepicker depart-date" type="text" name="end_date" placeholder="Depart" autocomplete="off">
                 </fieldset>
-                <fieldset class="g sm-one-third md-one-eighth">
+                <fieldset class="g sm-one-fourth md-one-eighth text-align-right">
                     <label class="is-visually-hidden" for="guests">Guests</label>
                     <div class="select-style">
-                    <%- guest_options = [['Guests', '-', {disabled: 'disabled'}], ['Any', 'all']] + (1..10).map { |v| [v, v] } %>
-                    <%= select_tag "guests", options_for_select(guest_options, @guests) %>
-                    </div>
-                </fieldset>
-                <fieldset class="g sm-one-whole md-one-sixth">
-                    <label class="is-visually-hidden" for="sort">Sort by</label>
-                    <div class="select-style">
-                        <%- sort_options = [['Sort by', '-', {disabled: 'disabled'}]] + sort_by %>
-                        <%= select_tag "sort", options_for_select(sort_options, @sort) %>
+                        <select name="guests" id="guests">
+                            <option disabled selected>Guests</option>
+                            <option value="all">Any</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                        </select>
                     </div>
                 </fieldset>
                 <footer class="g md-two-twelfths">
-                    <input class="btn btn--green no-min-width max-width" type="submit" value="Search">
+                  <input class="btn btn--brown no-min-width max-width search-btn" type="submit" value="Search">
                 </footer>
-            <%- end %>
+            <% end %>
         </div>
     </div>
     <%- if @units.empty? %>
