@@ -1,313 +1,95 @@
-<% content_for :hero_title, "Reserve".html_safe %> <!-- Hero/Page Title -->
+<% content_for :hero_title, "Find a Rental".html_safe %> <!-- Hero/Page Title -->
 <% content_for :lede, "Search for a rental at Rocky Point".html_safe %>
 <section class="padded-top scallop-top beige-bg">
     <div class="layout-container">
         <div class="property-search">
-          <form class='gw no-gutter'>
-            <fieldset class="g sm-one-whole md-five-twelfths">
-              <label class="is-visually-hidden">Rooms</label>
-              <div class="select-style">
-                <select name="id" id="select-drop" value="">
-                  <option disabled selected class="drop-options" >Rooms</option>
-                  <option id="HCNDA" value="1911-89478" class="drop-options" >Any</option>
-                  <option id="HCNDA" value="1911-89478" class="drop-options" >Entire Complex</option>
-                  <option id="HPLCN" value="1911-89481" class="drop-options" >El Pelicano</option>
-                  <option id="HSALA" value="1911-89483" class="drop-options">La Sala</option>
-                  <option id="HPLMA" value="1911-89482" class="drop-options">La Paloma</option>
-                  <option id="HCHUP" value="1911-89477" class="drop-options">La Chuparosa</option>
-                  <option id="HCRT1" value="1911-89479" class="drop-options">Courtyard 1</option>
-                  <option id="HCRT2" value="1911-89480" class="drop-options">Courtyard 2</option>
-                  <option id="HAGUI" value="1911-112148" class="drop-options">La Aguila</option>
-                </select>
-              </div>
-            </fieldset>
-            <fieldset class="g sm-one-third md-one-seventh">
-              <input readonly="readonly" id="start_date" class="no-borders datepicker" type="text" name="start_date" placeholder="Arrive" autocomplete="off">
-            </fieldset>
-            <fieldset class="g sm-one-third md-one-seventh">
-              <input readonly="readonly" id="end_date" class="no-borders datepicker" type="text" name="end_date" placeholder="Depart" autocomplete="off">
-            </fieldset>
-            <fieldset class="g sm-one-fourth md-one-eighth text-align-right">
-              <label class="is-visually-hidden" for="guests">Guests</label>
-              <div class="select-style">
-                <select name="guests" id="guests">
-                  <option disabled selected>Guests</option>
-                  <option value="all">Any</option>
-                  <option value="1">1</option>
-                  <option value="2">2</option>
-                  <option value="3">3</option>
-                  <option value="4">4</option>
-                  <option value="5">5</option>
-                  <option value="6">6</option>
-                  <option value="7">7</option>
-                  <option value="8">8</option>
-                  <option value="9">9</option>
-                  <option value="10">10</option>
-                </select>
-              </div>
-            </fieldset>
-            <footer class="g md-two-twelfths">
-              <input class="btn btn--brown no-min-width max-width search-btn" type="button" value="Search">
-            </footer>
-          </form>
+            <%= form_tag("/accommodations", {method: 'get', class: 'gw no-gutter'}) do %>
+                <fieldset class="g sm-one-whole md-one-fourth">
+                    <label class="is-visually-hidden">Where are you going?</label>
+                    <div class="select-style">
+                    <%- areas_options = [['Where are you going?', '-', {disabled: 'disabled'}], ['Any', 'all']] + areas.map { |v| [v[:name], v[:key]] } %>
+                    <%= select_tag "area", options_for_select(areas_options, @area) %>
+                    </div>
+                </fieldset>
+                <fieldset class="g sm-one-third md-one-seventh">
+                    <%= text_field_tag "start_date", @start_date, class: 'no-borders datepicker', placeholder: 'Arrive' %>
+                </fieldset>
+                <fieldset class="g sm-one-third md-one-seventh">
+                    <%= text_field_tag "end_date", @end_date, class: 'no-borders datepicker', placeholder: 'Depart' %>
+                </fieldset>
+                <fieldset class="g sm-one-third md-one-eighth">
+                    <label class="is-visually-hidden" for="guests">Guests</label>
+                    <div class="select-style">
+                    <%- guest_options = [['Guests', '-', {disabled: 'disabled'}], ['Any', 'all']] + (1..10).map { |v| [v, v] } %>
+                    <%= select_tag "guests", options_for_select(guest_options, @guests) %>
+                    </div>
+                </fieldset>
+                <fieldset class="g sm-one-whole md-one-sixth">
+                    <label class="is-visually-hidden" for="sort">Sort by</label>
+                    <div class="select-style">
+                        <%- sort_options = [['Sort by', '-', {disabled: 'disabled'}]] + sort_by %>
+                        <%= select_tag "sort", options_for_select(sort_options, @sort) %>
+                    </div>
+                </fieldset>
+                <footer class="g md-two-twelfths">
+                    <input class="btn btn--green no-min-width max-width" type="submit" value="Search">
+                </footer>
+            <%- end %>
         </div>
     </div>
-
+    <%- if @units.empty? %>
+    <div class="layout-container-smaller padded-bottom layout-centered">
+        <h1>No available rental properties found</h1>
+        <p>Please adjust your search and try again.</p>
+    </div>
+    <%- else %>
     <div class="layout-container">
-      <!--all hacienda rooms-->
-      <ul class="properties-list gw small-gutter">
-        <li class="property g sm-one-half md-one-whole">
-          <a href="/accommodations/1911-89478?start_date=&amp;end_date=&amp;guests=all"><img class="property-thumb" src="https://pictures.escapia.com/OCEANO/3865690439.jpg"></a>
-          <div class="details">
-            <div class="gw small-gutter">
-              <div class="g md-three-eighths">
-                <h2><a href="/accommodations/1911-89478?start_date=&amp;end_date=&amp;guests=all">Hacienda del Mar- Entire Complex</a></h2>
-                <p class="location">Las Conchas <br>Puerto Peñasco, Mexico</p>
-              </div>
-              <div class="g md-three-eighths">
-                <ul class="offerings">
-                  <li>
-                    <i class="icon icon-bath"></i>
-                    <span class="detail">7 bath</span>
-                  </li>
-                  <li>
-                    <i class="icon icon-bed"></i>
-                    <span class="detail">7 beds</span>
-                  </li>
-                  <li>
-                    <i class="icon icon-guests"></i>
-                    <span class="detail">15 guests</span>
-                  </li>
-                </ul>
-              </div>
-              <div class="g md-two-eighths">
-                <span class="price"></span>
-                <span class="type">house</span>
-              </div>
-            </div>
-          </div>
-        </li>
-        <li class="property g sm-one-half md-one-whole">
-          <a href="/accommodations/1911-112148?start_date=&amp;end_date=&amp;guests="><img class="property-thumb" src="https://pictures.escapia.com/OCEANO/6039020158.jpg"></a>
-          <div class="details">
-            <div class="gw small-gutter">
-              <div class="g md-three-eighths">
-                <h2><a href="/accommodations/1911-112148?start_date=&amp;end_date=&amp;guests=">Hacienda del Mar- Aguila</a></h2>
-                <p class="location">Las Conchas <br>Puerto Penasco, Mexico</p>
-              </div>
-              <div class="g md-three-eighths">
-                <ul class="offerings">
-                  <li>
-                    <i class="icon icon-bath"></i>
-                    <span class="detail">1 bath</span>
-                  </li>
-                  <li>
-                    <i class="icon icon-bed"></i>
-                    <span class="detail">1 bed</span>
-                  </li>
-                  <li>
-                    <i class="icon icon-guests"></i>
-                    <span class="detail">2 guests</span>
-                  </li>
-                </ul>
-              </div>
-              <div class="g md-two-eighths">
-                <span class="price"></span>
-                <span class="type">apartment</span>
-              </div>
-            </div>
-          </div>
-        </li>
-        <li class="property g sm-one-half md-one-whole">
-          <a href="/accommodations/1911-89479?start_date=&amp;end_date=&amp;guests="><img class="property-thumb" src="https://pictures.escapia.com/OCEANO/5665740489.jpg"></a>
-          <div class="details">
-            <div class="gw small-gutter">
-              <div class="g md-three-eighths">
-                <h2><a href="/accommodations/1911-89479?start_date=&amp;end_date=&amp;guests=">Hacienda del Mar - Courtyard 1</a></h2>
-                <p class="location">Las Conchas <br>Puerto Peñasco, Mexico</p>
-              </div>
-              <div class="g md-three-eighths">
-                <ul class="offerings">
-                  <li>
-                    <i class="icon icon-bath"></i>
-                    <span class="detail">1 bath</span>
-                  </li>
-                  <li>
-                    <i class="icon icon-bed"></i>
-                    <span class="detail">1 bed</span>
-                  </li>
-                  <li>
-                    <i class="icon icon-guests"></i>
-                    <span class="detail">2 guests</span>
-                  </li>
-                </ul>
-              </div>
-              <div class="g md-two-eighths">
-                <span class="price"></span>
-                <span class="type">apartment</span>
-              </div>
-            </div>
-          </div>
-        </li>
-        <li class="property g sm-one-half md-one-whole">
-          <a href="/accommodations/1911-89482?start_date=&amp;end_date=&amp;guests=all"><img class="property-thumb" src="https://pictures.escapia.com/OCEANO/6382770396.jpg"></a>
-          <div class="details">
-            <div class="gw small-gutter">
-              <div class="g md-three-eighths">
-                <h2><a href="/accommodations/1911-89482?start_date=&amp;end_date=&amp;guests=all">Hacienda del Mar - La Paloma</a></h2>
-                <p class="location">Las Conchas <br>Puerto Peñasco, Mexico</p>
-              </div>
-              <div class="g md-three-eighths">
-                <ul class="offerings">
-                  <li>
-                    <i class="icon icon-bath"></i>
-                    <span class="detail">1 bath</span>
-                  </li>
-                  <li>
-                    <i class="icon icon-bed"></i>
-                    <span class="detail">1 bed</span>
-                  </li>
-                  <li>
-                    <i class="icon icon-guests"></i>
-                    <span class="detail">2 guests</span>
-                  </li>
-                </ul>
-              </div>
-              <div class="g md-two-eighths">
-                <span class="price"></span>
-                <span class="type">apartment</span>
-              </div>
-            </div>
-          </div>
-        </li>
-        <li class="property g sm-one-half md-one-whole">
-          <a href="/accommodations/1911-89483?start_date=&amp;end_date=&amp;guests=all"><img class="property-thumb" src="https://pictures.escapia.com/OCEANO/1613760763.jpg"></a>
-          <div class="details">
-            <div class="gw small-gutter">
-              <div class="g md-three-eighths">
-                <h2><a href="/accommodations/1911-89483?start_date=&amp;end_date=&amp;guests=all">Hacienda del Mar - La Sala</a></h2>
-                <p class="location">Las Conchas <br>Puerto Peñasco, Mexico</p>
-              </div>
-              <div class="g md-three-eighths">
-                <ul class="offerings">
-                  <li>
-                    <i class="icon icon-bath"></i>
-                    <span class="detail">1 bath</span>
-                  </li>
-                  <li>
-                    <i class="icon icon-bed"></i>
-                    <span class="detail">1 bed</span>
-                  </li>
-                  <li>
-                    <i class="icon icon-guests"></i>
-                    <span class="detail">2 guests</span>
-                  </li>
-                </ul>
-              </div>
-              <div class="g md-two-eighths">
-                <span class="price"></span>
-                <span class="type">apartment</span>
-              </div>
-            </div>
-          </div>
-        </li>
-        <li class="property g sm-one-half md-one-whole">
-          <a href="/accommodations/1911-89480?start_date=&amp;end_date=&amp;guests=all"><img class="property-thumb" src="https://pictures.escapia.com/OCEANO/7147550489.jpg"></a>
-          <div class="details">
-            <div class="gw small-gutter">
-              <div class="g md-three-eighths">
-                <h2><a href="/accommodations/1911-89480?start_date=&amp;end_date=&amp;guests=all">Hacienda del Mar - Courtyard 2</a></h2>
-                <p class="location">Las Conchas <br>Puerto Peñasco, Mexico</p>
-              </div>
-              <div class="g md-three-eighths">
-                <ul class="offerings">
-                  <li>
-                    <i class="icon icon-bath"></i>
-                    <span class="detail">1 bath</span>
-                  </li>
-                  <li>
-                    <i class="icon icon-bed"></i>
-                    <span class="detail">1 bed</span>
-                  </li>
-                  <li>
-                    <i class="icon icon-guests"></i>
-                    <span class="detail">2 guests</span>
-                  </li>
-                </ul>
-              </div>
-              <div class="g md-two-eighths">
-                <span class="price"></span>
-                <span class="type">apartment</span>
-              </div>
-            </div>
-          </div>
-        </li>
-        <li class="property g sm-one-half md-one-whole">
-          <a href="/accommodations/1911-89477?start_date=&amp;end_date=&amp;guests=all"><img class="property-thumb" src="https://pictures.escapia.com/OCEANO/6630860531.jpg"></a>
-          <div class="details">
-            <div class="gw small-gutter">
-              <div class="g md-three-eighths">
-                <h2><a href="/accommodations/1911-89477?start_date=&amp;end_date=&amp;guests=all">Hacienda del Mar - Chuparosa</a></h2>
-                <p class="location">Las Conchas <br>Puerto Peñasco, Mexico</p>
-              </div>
-              <div class="g md-three-eighths">
-                <ul class="offerings">
-                  <li>
-                    <i class="icon icon-bath"></i>
-                    <span class="detail">1 bath</span>
-                  </li>
-                  <li>
-                    <i class="icon icon-bed"></i>
-                    <span class="detail">1 bed</span>
-                  </li>
-                  <li>
-                    <i class="icon icon-guests"></i>
-                    <span class="detail">2 guests</span>
-                  </li>
-                </ul>
-              </div>
-              <div class="g md-two-eighths">
-                <span class="price"></span>
-                <span class="type">apartment</span>
-              </div>
-            </div>
-          </div>
-        </li>
-        <li class="property g sm-one-half md-one-whole">
-          <a href="/1911-89481?start_date=&amp;end_date=&amp;guests=all"><img class="property-thumb" src="https://pictures.escapia.com/OCEANO/8702230763.jpg"></a>
-          <div class="details">
-            <div class="gw small-gutter">
-              <div class="g md-three-eighths">
-                <h2><a href="/accommodations/1911-89481?start_date=&amp;end_date=&amp;guests=all">Hacienda del Mar - El Pelicano</a></h2>
-                <p class="location">Las Conchas <br>Puerto Peñasco, Mexico</p>
-              </div>
-              <div class="g md-three-eighths">
-                <ul class="offerings">
-                  <li>
-                    <i class="icon icon-bath"></i>
-                    <span class="detail">1 bath</span>
-                  </li>
-                  <li>
-                    <i class="icon icon-bed"></i>
-                    <span class="detail">1 bed</span>
-                  </li>
-                  <li>
-                    <i class="icon icon-guests"></i>
-                    <span class="detail">3 guests</span>
-                  </li>
-                </ul>
-              </div>
-              <div class="g md-two-eighths">
-                <span class="price"></span>
-                <span class="type">apartment</span>
-              </div>
-            </div>
-          </div>
-        </li>
-      </ul>
+        <ul class="properties-list gw small-gutter">
+            <%- @units.each do |unit| %>
+            <li class="property g sm-one-half md-one-whole">
+
+                <%
+                full_link = accommodation_url(unit.code) + "?start_date=#{@start_date}&end_date=#{@end_date}&guests=#{@guests}"
+                %>
+
+                <a href="<%= full_link %>"><img class="property-thumb" src="<%= unit.standard_images[0][:url] %>"></a>
+                <div class="details">
+                    <div class="gw small-gutter">
+                        <div class="g md-three-eighths">
+                            <h2><a href="<%= full_link %>"><%= unit.name %></a></h2>
+                            <p class="location"><%= unit.address.street %> <br><%= unit.address.city %>, <%= unit.address.country %></p>
+                        </div>
+                        <div class="g md-three-eighths">
+                            <ul class="offerings">
+                                <li>
+                                    <i class="icon icon-bath"></i>
+                                    <span class="detail"><%= unit.bathrooms %> bath</span>
+                                </li>
+                                <li>
+                                    <i class="icon icon-bed"></i>
+                                    <span class="detail"><%= unit.bedrooms %> beds</span>
+                                </li>
+                                <li>
+                                    <i class="icon icon-guests"></i>
+                                    <span class="detail"><%= unit.occupancy %> guests</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="g md-two-eighths">
+                            <span class="price"></span>
+                            <span class="type"><%= unit.type %></span>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <%- end %>
+
+        </ul>
         <div class="pagination pagination-centered">
         <%= will_paginate @units, previous_label: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16.3 32.6"><polygon points="16.3,32.6 0,16.3 16.3,0"/></svg>',
                                   next_label: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16.3 32.6"><polygon points="0,0 16.3,16.3 0,32.6"/></svg>' %>
+        <%- end %>
         </div>
     </div>
 </section>
+

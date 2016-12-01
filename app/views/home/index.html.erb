@@ -7,7 +7,7 @@
 <section class="scallop-top top-padding-by-3 main-content light-grey-bg-color">
     <div class="layout-container layout-centered">
         <div class="property-search margin-top-by-28 margin-bottom-by-20 welcome-text-align-for-smaller">
-            <form class='gw no-gutter'>
+            <%= form_tag(accommodations_path, class: 'gw no-gutter', method: :get) do %>
                 <fieldset class="g sm-one-whole md-five-twelfths">
                     <label class="is-visually-hidden">Rooms</label>
                     <div class="select-style">
@@ -53,7 +53,7 @@
                 <footer class="g md-two-twelfths">
                   <input class="btn btn--brown no-min-width max-width search-btn" type="button" value="Search">
                 </footer>
-            </form>
+            <% end %>
         </div>
     </div>
 </section>

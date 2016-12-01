@@ -1,4 +1,4 @@
-server "192.155.86.203", user: "deploy", roles: %w{web app db}
+server "192.155.86.203", user: "deploy", roles: %w{web app}
 
 set :pty, true
 
