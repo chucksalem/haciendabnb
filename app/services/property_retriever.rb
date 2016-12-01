@@ -6,7 +6,7 @@ class PropertyRetriever
     @criteria = criteria
   end
 
-#TODO Check default value correctness of this code 
+#TODO Check default value correctness of this code
 # @area       = params[:area] || '-'
 # @start_date = params[:start_date]
 # @end_date   = params[:end_date]
@@ -31,7 +31,8 @@ class PropertyRetriever
     sort = 'G'
     sort = criteria[:sort] if criteria[:sort] && criteria[:sort] != '-'
     guests = [{type: 10, count: params[:guests]}] unless [nil, '', 'all'].include?(criteria[:guests])
-    area = criteria[:area]
+    area = 'all'
+    area = criteria[:area] unless criteria[:area].blank?
     codes = []
     search_hash = { sort: sort, date_range: { start: start_date, end: end_date }, guests: guests }
 
@@ -41,11 +42,14 @@ class PropertyRetriever
     end
     codes = codes.uniq
 
-    if !area.blank? && area != 'all'
-      in_area_codes = UnitRepository.units_in_area(area)
-      codes = codes & in_area_codes
-    end
+    # in_area_codes = UnitRepository.units_in_area(area)
+    # codes = codes & in_area_codes
 
-    codes.map { |c| UnitRepository.get c }
+    unit_ids = OceanoConfig[:unit_ids]
+    if unit_ids.blank?
+      codes.map { |c| UnitRepository.get c }
+    else
+      codes.select{ |c| unit_ids.include? c }.map { |c| UnitRepository.get c }
+    end
   end
 end
