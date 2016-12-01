@@ -8,7 +8,7 @@ class UnitRepository
   def self.search(criteria)
     key   = "search:#{hash_to_key(criteria)}"
     value = redis.get(key)
-    return MultiJson.load(value) unless value.nil?
+    return MultiJson.load(value) if value
     Unit.search(criteria).tap { |c| redis.setex(key, TTL_SECONDS, MultiJson.dump(c)) }
   end
 

@@ -32,11 +32,12 @@ class PropertyRetriever
     sort = criteria[:sort] if criteria[:sort] && criteria[:sort] != '-'
     guests = [{type: 10, count: params[:guests]}] unless [nil, '', 'all'].include?(criteria[:guests])
     area = criteria[:area]
-
     codes = []
     search_hash = { sort: sort, date_range: { start: start_date, end: end_date }, guests: guests }
+
+    #thats really crap but in case of this API order of arguments matter
     OceanoConfig[:cache_population_searches].each do |criteria|
-      codes += UnitRepository.search(search_hash)
+      codes += UnitRepository.search(criteria.merge! search_hash)
     end
 
     codes = codes.uniq
