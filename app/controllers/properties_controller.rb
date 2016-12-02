@@ -7,7 +7,7 @@ class PropertiesController < ApplicationController
     @end_date   = params[:end_date]
     @guests     = params[:guests]
     @sort       = params[:sort] || 'P'
-    search_hash = { area: params[:area], start_date: params[:start_date], end_date: params[:end_date], guests: params[:guests], sort: params[:sort] }
+    search_hash = { area: params[:area], start_date: params[:start_date], end_date: params[:end_date], guests: params[:guests], sort: params[:sort], room: params[:room] }
     searcher = PropertyRetriever.new search_hash
     units = searcher.retrieve
     @units = WillPaginate::Collection.create((params[:page] || 1).to_i, 10, units.count) do |pager|

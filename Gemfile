@@ -37,6 +37,7 @@ group :development do
   gem 'capistrano-bundler', '1.1.4'
   gem 'capistrano3-puma'
   gem 'capistrano-rails'
+  gem 'quiet_assets'
 end
 
 

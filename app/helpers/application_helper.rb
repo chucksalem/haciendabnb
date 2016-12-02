@@ -5,6 +5,12 @@ module ApplicationHelper
     end
   end
 
+  def rooms
+    OceanoConfig[:units].map do |a|
+      [a[:unit_name], a[:unit_id]]
+    end
+  end
+
   def sort_by
     [
       ['Guest Rating', 'G'],

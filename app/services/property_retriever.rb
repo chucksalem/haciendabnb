@@ -33,8 +33,9 @@ class PropertyRetriever
     guests = [{type: 10, count: criteria[:guests]}] unless [nil, '', 'all'].include?(criteria[:guests])
     area = 'all'
     area = criteria[:area] unless criteria[:area].blank?
-    codes = []
+    room = criteria[:room] unless criteria[:room].blank?
     search_hash = { sort: sort, date_range: { start: start_date, end: end_date }, guests: guests }
+    codes = []
 
     #thats really crap but in case of this API order of arguments matter
     OceanoConfig[:cache_population_searches].each do |criteria|
@@ -45,11 +46,14 @@ class PropertyRetriever
     # in_area_codes = UnitRepository.units_in_area(area)
     # codes = codes & in_area_codes
 
-    unit_ids = OceanoConfig[:unit_ids]
+    codes = codes.select { |c| c == room } if room && room != 'all'
+
+    unit_ids = OceanoConfig[:units].map { |unit| unit[:unit_id] }
     if unit_ids.blank?
       codes.map { |c| UnitRepository.get c }
     else
       codes.select{ |c| unit_ids.include? c }.map { |c| UnitRepository.get c }
     end
+
   end
 end
