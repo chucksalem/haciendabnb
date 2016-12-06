@@ -22,5 +22,13 @@ units:
     unit_name: Courtyard 2
   - unit_id: 1911-112148
     unit_name: La Aguila
-
-
+  - unit_id: 1911-124068
+    unit_name: Courtyard Rooms
+  - unit_id: 1911-124080
+    unit_name: Upper View Rooms 1
+  - unit_id: 1911-124086
+    unit_name: Upper View Rooms 2
+  - unit_id: 1911-124088
+    unit_name: East Building
+  - unit_id: 1911-124090
+    unit_name: Main House
